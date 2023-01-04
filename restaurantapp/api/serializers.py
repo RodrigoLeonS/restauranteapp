@@ -3,6 +3,7 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password # <-- Trae las condiciones para un password
 #importar modelos 
 from django.contrib.auth.models import User
+from .models import MenuReservas,MenuCategories,MenuProducts
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
@@ -37,3 +38,18 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user
+    
+class ReservasSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuReservas
+        fields = '__all__'
+
+class ProductsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuProducts
+        fields = '__all__'
+
+class CategoriesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuCategories
+        fields = '__all__'

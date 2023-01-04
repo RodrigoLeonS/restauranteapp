@@ -5,5 +5,10 @@ from . import views
 urlpatterns = [
     path('hello/', views.HelloView.as_view(), name='hello'), # <-- Ruta de prueba que se accede solo si se envía el token
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- Link para obtener el token
-    path('register',views.RegisterUserAPIView.as_view()),
+    path('userfilter/<int:id_user>',views.UserFilterDate.as_view()),
+    path('register/',views.RegisterUserAPIView.as_view()),
+    path('listdate/',views.ListDate.as_view()),
+    path('listdate/<int:id>',views.ListDateDetail.as_view()),
+    path('listcategories/',views.ListCategories.as_view()),
+    path('listproducts/',views.ListProducts.as_view()),
 ]
